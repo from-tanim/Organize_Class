@@ -1,0 +1,50 @@
+<!-- Chapter 1 -->
+        <div class="chapter">
+            <div class="chapter-header">
+                <h2 class="chapter-title">Chapter 1: Mechanics</h2>
+                <span class="chapter-toggle"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="videos-container">
+                <div class="video-grid">
+                
+                
+                
+                
+                    <!-- Video 1 -->
+                    <div class="video-card">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/WCu0dqfFKnU" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info">
+                            <h3 class="video-title">Introduction to Classical Mechanics</h3>
+                            <div class="video-meta">
+                                <span>Lecture 1.1</span>
+                                <span>45 min</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-completed" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    <!-- Video 2 -->
+                    <div class="video-card">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_2" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info">
+                            <h3 class="video-title">Newton's Laws of Motion</h3>
+                            <div class="video-meta">
+                                <span>Lecture 1.2</span>
+                                <span>38 min</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-completed" style="width: 30%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
