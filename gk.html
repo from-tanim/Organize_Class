@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GK Lectures | Talent?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6a8cff;
+            --secondary: #ff7b7b;
+            --dark: #121212;
+            --darker: #1e1e1e;
+            --light: #e0e0e0;
+            --lighter: #f5f5f5;
+            --card-bg: #2d2d2d;
+            --border: #444;
+            --chapter-bg: #252525;
+            --chapter-hover: #333;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+
+        .subject-header {
+            background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), var(--darker);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+            padding: 0 2rem;
+        }
+
+        .chapter-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .chapter {
+            background: var(--chapter-bg);
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .chapter-header {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .chapter-header:hover {
+            background: var(--chapter-hover);
+        }
+
+        .chapter-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin: 0;
+        }
+
+        .chapter-toggle {
+            color: var(--light);
+            transition: transform 0.3s ease;
+            transform: rotate(-90deg);
+        }
+
+        .chapter.active .chapter-toggle {
+            transform: rotate(0deg);
+        }
+
+        .videos-container {
+            display: none;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .chapter.active .videos-container {
+            display: block;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .video-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-info {
+            padding: 1rem;
+        }
+
+        .video-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--lighter);
+        }
+
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #b0b0b0;
+            font-size: 0.85rem;
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: var(--border);
+            margin-top: 0.5rem;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-completed {
+            height: 100%;
+            background: var(--primary);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 1rem;
+            background: var(--darker);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--light);
+            font-size: 1rem;
+        }
+
+        .toggle-all-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-left: 1rem;
+        }
+
+        .toggle-all-btn:hover {
+            background: #5a7aff;
+        }
+
+        @media (max-width: 768px) {
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .chapter-header {
+                padding: 1rem;
+            }
+            
+            .controls {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="subject-header">
+        <h1>GK Lectures</h1>
+        <p>Comprehensive video lectures organized by chapters for effective learning</p>
+    </section>
+
+    <div class="controls">
+        <input type="text" class="search-box" placeholder="Search videos...">
+        <button class="toggle-all-btn">Expand All</button>
+    </div>
+
+    <div class="chapter-container">
+    
+    
+    
+    
+    
+    
+        <!-- Chapter 1 -->
+        <div class="chapter">
+            <div class="chapter-header">
+                <h2 class="chapter-title">Chapter 1: Mechanics</h2>
+                <span class="chapter-toggle"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="videos-container">
+                <div class="video-grid">
+                
+                
+                
+                
+                    <!-- Video 1 -->
+                    <div class="video-card">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/WCu0dqfFKnU" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info">
+                            <h3 class="video-title">Introduction to Classical Mechanics</h3>
+                            <div class="video-meta">
+                                <span>Lecture 1.1</span>
+                                <span>45 min</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-completed" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    <!-- Video 2 -->
+                    <div class="video-card">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_2" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info">
+                            <h3 class="video-title">Newton's Laws of Motion</h3>
+                            <div class="video-meta">
+                                <span>Lecture 1.2</span>
+                                <span>38 min</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-completed" style="width: 30%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <!-- Chapter 2 -->
+        <div class="chapter">
+            <div class="chapter-header">
+                <h2 class="chapter-title">Chapter 2: Thermodynamics</h2>
+                <span class="chapter-toggle"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="videos-container">
+                <div class="video-grid">
+                
+                
+                
+                    <!-- Video 1 -->
+                    <div class="video-card">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_3" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info">
+                            <h3 class="video-title">Laws of Thermodynamics</h3>
+                            <div class="video-meta">
+                                <span>Lecture 2.1</span>
+                                <span>41 min</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-completed" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+
+    <script>
+        // Initialize all chapters as collapsed
+        document.querySelectorAll('.chapter').forEach(chapter => {
+            chapter.classList.remove('active');
+        });
+
+        // Toggle individual chapters
+        document.querySelectorAll('.chapter-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const chapter = header.parentElement;
+                chapter.classList.toggle('active');
+                updateToggleAllButton();
+            });
+        });
+
+        // Search functionality
+        const searchBox = document.querySelector('.search-box');
+        searchBox.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            document.querySelectorAll('.video-card').forEach(card => {
+                const title = card.querySelector('.video-title').textContent.toLowerCase();
+                card.style.display = title.includes(searchTerm) ? 'block' : 'none';
+            });
+        });
+
+        // Expand/Collapse All functionality
+        const toggleAllBtn = document.querySelector('.toggle-all-btn');
+        toggleAllBtn.addEventListener('click', () => {
+            const chapters = document.querySelectorAll('.chapter');
+            const allExpanded = Array.from(chapters).every(ch => ch.classList.contains('active'));
+            
+            chapters.forEach(chapter => {
+                if (allExpanded) {
+                    chapter.classList.remove('active');
+                } else {
+                    chapter.classList.add('active');
+                }
+            });
+            
+            updateToggleAllButton();
+        });
+
+        function updateToggleAllButton() {
+            const chapters = document.querySelectorAll('.chapter');
+            const allExpanded = Array.from(chapters).every(ch => ch.classList.contains('active'));
+            toggleAllBtn.textContent = allExpanded ? 'Collapse All' : 'Expand All';
+        }
+    </script>
+</body>
+</html>
