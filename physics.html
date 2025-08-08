@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Physics Lectures | Talent?</title>
+    <title>Physics Lectures | Talent</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -16,6 +16,7 @@
             --lighter: #f5f5f5;
             --card-bg: #2d2d2d;
             --border: #444;
+            --paper-bg: #1a1a1a;
             --chapter-bg: #252525;
             --chapter-hover: #333;
         }
@@ -25,6 +26,8 @@
             background-color: var(--dark);
             color: var(--light);
             line-height: 1.6;
+            margin: 0;
+            padding: 0;
         }
 
         .subject-header {
@@ -39,27 +42,69 @@
             display: flex;
             justify-content: space-between;
             max-width: 1200px;
-            margin: 0 auto 2rem;
+            margin: 0 auto 1rem;
             padding: 0 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
-        .chapter-container {
+        .content-container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
         }
 
+        .paper {
+            background: var(--paper-bg);
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .paper-header {
+            padding: 1.5rem;
+            background: linear-gradient(90deg, var(--primary), #2a7a0c);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .paper-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .paper-toggle {
+            transition: transform 0.3s ease;
+            transform: rotate(-90deg);
+        }
+
+        .paper.active .paper-toggle {
+            transform: rotate(0deg);
+        }
+
+        .chapters-container {
+            display: none;
+            padding: 0.5rem 1.5rem 1.5rem;
+        }
+
+        .paper.active .chapters-container {
+            display: block;
+        }
+
         .chapter {
             background: var(--chapter-bg);
             border-radius: 8px;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
         }
 
         .chapter-header {
-            padding: 1.5rem;
+            padding: 1.2rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -72,7 +117,7 @@
         }
 
         .chapter-title {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 600;
             color: var(--primary);
             margin: 0;
@@ -172,6 +217,7 @@
             border-radius: 8px;
             color: var(--light);
             font-size: 1rem;
+            flex-grow: 1;
         }
 
         .toggle-all-btn {
@@ -183,11 +229,11 @@
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s ease;
-            margin-left: 1rem;
+            white-space: nowrap;
         }
 
         .toggle-all-btn:hover {
-            background: #5a7aff;
+            background: #2d8a0a;
         }
 
         @media (max-width: 768px) {
@@ -195,13 +241,8 @@
                 grid-template-columns: 1fr;
             }
             
-            .chapter-header {
+            .paper-header, .chapter-header {
                 padding: 1rem;
-            }
-            
-            .controls {
-                flex-direction: column;
-                gap: 1rem;
             }
         }
     </style>
@@ -217,315 +258,241 @@
         <button class="toggle-all-btn">Expand All</button>
     </div>
 
-    <div class="chapter-container">
-    
-    
-     
-            
-                
-    
-    
-    
-        <!-- Chapter 1 -->
-        <div class="chapter">
-            <div class="chapter-header">
-                <h2 class="chapter-title">Chapter 1: Physical World and Measurement</h2>
-                <span class="chapter-toggle"><i class="fas fa-chevron-down"></i></span>
+    <div class="content-container">
+        <!-- Paper I -->
+        <div class="paper">
+            <div class="paper-header">
+                <h2 class="paper-title">Paper I</h2>
+                <span class="paper-toggle"><i class="fas fa-chevron-down"></i></span>
             </div>
-            <div class="videos-container">
-                <div class="video-grid">
-                
-                
-                
-                
-                    <!-- Video 1 -->
-                    <div class="video-card">
-                        <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/WCu0dqfFKnU" allowfullscreen></iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">Physical World and Measurement</h3>
-                            <div class="video-meta">
-                                <span>Lecture 1.1</span>
-                                
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-completed" style="width: 75%"></div>
+            <div class="chapters-container">
+                <!-- Chapter 1 -->
+                <div class="chapter">
+                    <div class="chapter-header">
+                        <h3 class="chapter-title">Chapter 1: Physical World and Measurement</h3>
+                        <span class="chapter-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="videos-container">
+                        <div class="video-grid">
+                            <div class="video-card">
+                                <div class="video-container">
+                                    <iframe src="https://www.youtube.com/embed/WCu0dqfFKnU" allowfullscreen></iframe>
+                                </div>
+                                <div class="video-info">
+                                    <h4 class="video-title">Physical World and Measurement</h4>
+                                    <div class="video-meta">
+                                        <span>Lecture 1.1</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-completed" style="width: 75%"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    
-                    
-                    
-                    
+                </div>
+                
+                <!-- Chapter 2 -->
+                <div class="chapter">
+                    <div class="chapter-header">
+                        <h3 class="chapter-title">Chapter 2: Vectors</h3>
+                        <span class="chapter-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="videos-container">
+                        <div class="video-grid">
+                            <div class="video-card">
+                                <div class="video-container">
+                                    <iframe src="https://www.youtube.com/embed/WCu0dqfFKnU" allowfullscreen></iframe>
+                                </div>
+                                <div class="video-info">
+                                    <h4 class="video-title">Vectors</h4>
+                                    <div class="video-meta">
+                                        <span>Lecture 2.1</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-completed" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Chapter 3 -->
+                <div class="chapter">
+                    <div class="chapter-header">
+                        <h3 class="chapter-title">Chapter 3: Newtonian Mechanics</h3>
+                        <span class="chapter-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="videos-container">
+                        <div class="video-grid">
+                            <div class="video-card">
+                                <div class="video-container">
+                                    <iframe src="https://www.youtube.com/embed/WCu0dqfFKnU" allowfullscreen></iframe>
+                                </div>
+                                <div class="video-info">
+                                    <h4 class="video-title">Newtonian Mechanics</h4>
+                                    <div class="video-meta">
+                                        <span>Lecture 3.1</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-completed" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Chapter 5 -->
+                <div class="chapter">
+                    <div class="chapter-header">
+                        <h3 class="chapter-title">Chapter 5: Work, Energy and Power</h3>
+                        <span class="chapter-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="videos-container">
+                        <div class="video-grid">
+                            <div class="video-card">
+                                <div class="video-container">
+                                    <iframe src="https://www.youtube.com/embed/WCu0dqfFKnU" allowfullscreen></iframe>
+                                </div>
+                                <div class="video-info">
+                                    <h4 class="video-title">Work, Energy and Power</h4>
+                                    <div class="video-meta">
+                                        <span>Lecture 5.1</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-completed" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Chapter 6 -->
+                <div class="chapter">
+                    <div class="chapter-header">
+                        <h3 class="chapter-title">Chapter 6: Gravitation and Gravity</h3>
+                        <span class="chapter-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="videos-container">
+                        <div class="video-grid">
+                            <div class="video-card">
+                                <div class="video-container">
+                                    <iframe src="https://www.youtube.com/embed/WCu0dqfFKnU" allowfullscreen></iframe>
+                                </div>
+                                <div class="video-info">
+                                    <h4 class="video-title">Gravitation and Gravity</h4>
+                                    <div class="video-meta">
+                                        <span>Lecture 6.1</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-completed" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Chapter 7 -->
+                <div class="chapter">
+                    <div class="chapter-header">
+                        <h3 class="chapter-title">Chapter 7: Structural Properties of Matters</h3>
+                        <span class="chapter-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="videos-container">
+                        <div class="video-grid">
+                            <div class="video-card">
+                                <div class="video-container">
+                                    <iframe src="https://www.youtube.com/embed/WCu0dqfFKnU" allowfullscreen></iframe>
+                                </div>
+                                <div class="video-info">
+                                    <h4 class="video-title">Structural Properties of Matters</h4>
+                                    <div class="video-meta">
+                                        <span>Lecture 7.1</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-completed" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Chapter 8 -->
+                <div class="chapter">
+                    <div class="chapter-header">
+                        <h3 class="chapter-title">Chapter 8: Periodic Motion</h3>
+                        <span class="chapter-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="videos-container">
+                        <div class="video-grid">
+                            <div class="video-card">
+                                <div class="video-container">
+                                    <iframe src="https://www.youtube.com/embed/WCu0dqfFKnU" allowfullscreen></iframe>
+                                </div>
+                                <div class="video-info">
+                                    <h4 class="video-title">Periodic Motion</h4>
+                                    <div class="video-meta">
+                                        <span>Lecture 8.1</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-completed" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Chapter 10 -->
+                <div class="chapter">
+                    <div class="chapter-header">
+                        <h3 class="chapter-title">Chapter 10: Ideal Gas</h3>
+                        <span class="chapter-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="videos-container">
+                        <div class="video-grid">
+                            <div class="video-card">
+                                <div class="video-container">
+                                    <iframe src="https://www.youtube.com/embed/WCu0dqfFKnU" allowfullscreen></iframe>
+                                </div>
+                                <div class="video-info">
+                                    <h4 class="video-title">Ideal Gas</h4>
+                                    <div class="video-meta">
+                                        <span>Lecture 10.1</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-completed" style="width: 75%"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        <!-- Chapter 2 -->
-        <div class="chapter">
-            <div class="chapter-header">
-                <h2 class="chapter-title">Chapter 2: Vectors</h2>
-                <span class="chapter-toggle"><i class="fas fa-chevron-down"></i></span>
-            </div>
-            <div class="videos-container">
-                <div class="video-grid">
-                
-                
-                
-                    <!-- Video 1 -->
-                    <div class="video-card">
-                        <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_3" allowfullscreen></iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">Laws of Thermodynamics</h3>
-                            <div class="video-meta">
-                                <span>Lecture 2.1</span>
-                               
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-completed" style="width: 0%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-    
-    
-    
-    
-    
-        <!-- Chapter 3 -->
-        <div class="chapter">
-            <div class="chapter-header">
-                <h2 class="chapter-title">Chapter 4: Newtonian Mechanics</h2>
-                <span class="chapter-toggle"><i class="fas fa-chevron-down"></i></span>
-            </div>
-            <div class="videos-container">
-                <div class="video-grid">
-                
-                
-                
-                
-                    <!-- Video 1 -->
-                    <div class="video-card">
-                        <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/WCu0dqfFKnU" allowfullscreen></iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">    topic    </h3>
-                            <div class="video-meta">
-                                <span>Lecture 1.1</span>
-                                
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-completed" style="width: 75%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    
-    
-    
-     <!-- Chapter 5 -->
-        <div class="chapter">
-            <div class="chapter-header">
-                <h2 class="chapter-title">Chapter 5: Work, Energy and Power</h2>
-                <span class="chapter-toggle"><i class="fas fa-chevron-down"></i></span>
-            </div>
-            <div class="videos-container">
-                <div class="video-grid">
-                
-                
-                
-                
-                <!-- Video 1 -->
-                    <div class="video-card">
-                        <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/WCu0dqfFKnU" allowfullscreen></iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">    topic    </h3>
-                            <div class="video-meta">
-                                <span>Lecture 1.1</span>
-                                
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-completed" style="width: 75%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-                
-    
-    
-    
-    
-    
-     <!-- Chapter 6 -->
-        <div class="chapter">
-            <div class="chapter-header">
-                <h2 class="chapter-title">Chapter 6: Gravitation and Gravity</h2>
-                <span class="chapter-toggle"><i class="fas fa-chevron-down"></i></span>
-            </div>
-            <div class="videos-container">
-                <div class="video-grid">
-                
-                
-                
-                <!-- Video 1 -->
-                    <div class="video-card">
-                        <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/WCu0dqfFKnU" allowfullscreen></iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">    topic    </h3>
-                            <div class="video-meta">
-                                <span>Lecture 1.1</span>
-                                
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-completed" style="width: 75%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    
-    
-    <!-- Chapter 7 -->
-        <div class="chapter">
-            <div class="chapter-header">
-                <h2 class="chapter-title">Chapter 7: Structural Properties of Matters</h2>
-                <span class="chapter-toggle"><i class="fas fa-chevron-down"></i></span>
-            </div>
-            <div class="videos-container">
-                <div class="video-grid">
-                
-                
-                
-                <!-- Video 1 -->
-                    <div class="video-card">
-                        <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/WCu0dqfFKnU" allowfullscreen></iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">    topic    </h3>
-                            <div class="video-meta">
-                                <span>Lecture 1.1</span>
-                                
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-completed" style="width: 75%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    
-    
-    
-    <!-- Chapter 8 -->
-        <div class="chapter">
-            <div class="chapter-header">
-                <h2 class="chapter-title">Chapter 8: Periodic Motion</h2>
-                <span class="chapter-toggle"><i class="fas fa-chevron-down"></i></span>
-            </div>
-            <div class="videos-container">
-                <div class="video-grid">
-                
-                
-                
-                <!-- Video 1 -->
-                    <div class="video-card">
-                        <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/WCu0dqfFKnU" allowfullscreen></iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">    topic    </h3>
-                            <div class="video-meta">
-                                <span>Lecture 1.1</span>
-                                
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-completed" style="width: 75%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    
-    
-    
-    <!-- Chapter 10 -->
-        <div class="chapter">
-            <div class="chapter-header">
-                <h2 class="chapter-title">Chapter 10: Ideal Gas</h2>
-                <span class="chapter-toggle"><i class="fas fa-chevron-down"></i></span>
-            </div>
-            <div class="videos-container">
-                <div class="video-grid">
-                
-                
-                
-                <!-- Video 1 -->
-                    <div class="video-card">
-                        <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/WCu0dqfFKnU" allowfullscreen></iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">    topic    </h3>
-                            <div class="video-meta">
-                                <span>Lecture 1.1</span>
-                                
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-completed" style="width: 75%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    
-    
-    
 
     <script>
-        // Initialize all chapters as collapsed
-        document.querySelectorAll('.chapter').forEach(chapter => {
-            chapter.classList.remove('active');
+        // Initialize all papers and chapters as collapsed
+        document.querySelectorAll('.paper, .chapter').forEach(element => {
+            element.classList.remove('active');
         });
 
-        // Toggle individual chapters
+        // Toggle papers
+        document.querySelectorAll('.paper-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const paper = header.parentElement;
+                paper.classList.toggle('active');
+                updateToggleAllButton();
+            });
+        });
+
+        // Toggle chapters
         document.querySelectorAll('.chapter-header').forEach(header => {
             header.addEventListener('click', () => {
                 const chapter = header.parentElement;
@@ -547,14 +514,15 @@
         // Expand/Collapse All functionality
         const toggleAllBtn = document.querySelector('.toggle-all-btn');
         toggleAllBtn.addEventListener('click', () => {
-            const chapters = document.querySelectorAll('.chapter');
-            const allExpanded = Array.from(chapters).every(ch => ch.classList.contains('active'));
+            const papers = document.querySelectorAll('.paper');
+            const allExpanded = Array.from(papers).every(p => p.classList.contains('active'));
             
-            chapters.forEach(chapter => {
+            papers.forEach(paper => {
                 if (allExpanded) {
-                    chapter.classList.remove('active');
+                    paper.classList.remove('active');
+                    paper.querySelectorAll('.chapter').forEach(ch => ch.classList.remove('active'));
                 } else {
-                    chapter.classList.add('active');
+                    paper.classList.add('active');
                 }
             });
             
@@ -562,8 +530,8 @@
         });
 
         function updateToggleAllButton() {
-            const chapters = document.querySelectorAll('.chapter');
-            const allExpanded = Array.from(chapters).every(ch => ch.classList.contains('active'));
+            const papers = document.querySelectorAll('.paper');
+            const allExpanded = Array.from(papers).every(p => p.classList.contains('active'));
             toggleAllBtn.textContent = allExpanded ? 'Collapse All' : 'Expand All';
         }
     </script>
