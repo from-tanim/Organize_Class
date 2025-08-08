@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be a warrior</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+    --primary: #6a8cff;  /* Brighter primary for dark mode */
+    --secondary: #ff7b7b;
+    --dark: #121212;    /* Dark background */
+    --darker: #1e1e1e;  /* Slightly lighter dark */
+    --light: #e0e0e0;   /* Light text */
+    --lighter: #f5f5f5; /* Brighter text */
+    --success: #4caf50;
+    --card-bg: #2d2d2d; /* Card backgrounds */
+    --border: #444;     /* Borders */
+}
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--dark);
+    color: var(--light);
+}
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), #6a5acd);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: #0000;
+            background-size: cover;
+            position: relative;
+            color: white;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .countdown-container {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem auto;
+            max-width: 600px;
+        }
+        
+        .countdown-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .countdown-item {
+            background: white;
+            color: var(--dark);
+            padding: 1rem;
+            border-radius: 8px;
+            min-width: 80px;
+            text-align: center;
+        }
+        
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .countdown-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--dark);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+        }
+        
+        .subjects {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            color: var(--dark);
+        }
+        
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .subject-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .subject-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .subject-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .subject-content {
+            padding: 1.5rem;
+        }
+        
+        .subject-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .subject-desc {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .countdown {
+                flex-wrap: wrap;
+            }
+            
+            .subject-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Talent?</div>
+            <div class="nav-links">
+                <a href="#subjects">Subjects</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+                
+            </div>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Hard Works Always Beats Talent</h1>
+            <p>Be careful about your stimulation</p>
+            
+            <div class="countdown-container">
+                <h3 class="countdown-title">Next Live Session Starts In:</h3>
+                <div class="countdown">
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="days">00</div>
+                        <div class="countdown-label">Days</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="hours">00</div>
+                        <div class="countdown-label">Hours</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="minutes">00</div>
+                        <div class="countdown-label">Minutes</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="seconds">00</div>
+                        <div class="countdown-label">Seconds</div>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="#subjects" class="btn">Explore Lectures</a>
+        </div>
+    </section>
+    
+    <section class="subjects" id="subjects">
+        <h2 class="section-title">Subjects</h2>
+        <div class="subject-grid">
+            <div class="subject-card">
+                <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Physics">
+                <div class="subject-content">
+                    <h3 class="subject-title">Physics</h3>
+                    <p class="subject-desc">Master the fundamentals of motion, energy, and forces with our comprehensive physics lectures.</p>
+                    <a href="physics.html" class="btn">Lectures</a>
+                </div>
+            </div>
+            
+            <div class="subject-card">
+                <img src="https://images.unsplash.com/photo-1605522588381-961f8d857a0a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Chemistry">
+                <div class="subject-content">
+                    <h3 class="subject-title">Chemistry</h3>
+                    <p class="subject-desc">Explore the world of atoms, molecules, and chemical reactions with our expert instructors.</p>
+                    <a href="chemistry.html" class="btn">Lectures</a>
+                </div>
+            </div>
+            
+            <div class="subject-card">
+                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mathematics">
+                <div class="subject-content">
+                    <h3 class="subject-title">Mathematics</h3>
+                    <p class="subject-desc">From algebra to calculus, build your mathematical skills with our structured video lessons.</p>
+                    <a href="math.html" class="btn">Lectures</a>
+                </div>
+            </div>
+            
+            <div class="subject-card">
+                <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Biology">
+                <div class="subject-content">
+                    <h3 class="subject-title">Biology</h3>
+                    <p class="subject-desc">Discover the wonders of life science with our engaging biology lecture series.</p>
+                    <a href="biology.html" class="btn">Lectures</a>
+                </div>
+            </div>
+            
+            <div class="subject-card">
+                <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Bangla">
+                <div class="subject-content">
+                    <h3 class="subject-title">Bangla</h3>
+                    <p class="subject-desc">Enhance your Bangla language skills with our comprehensive literature and grammar lessons.</p>
+                    <a href="bangla.html" class="btn">Lectures</a>
+                </div>
+            </div>
+            
+            <div class="subject-card">
+                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="General Knowledge">
+                <div class="subject-content">
+                    <h3 class="subject-title">General Knowledge</h3>
+                    <p class="subject-desc">Expand your knowledge about the world with our GK lecture series covering various topics.</p>
+                    <a href="gk.html" class="btn">Lectures</a>
+                </div>
+            </div>
+            
+            <div class="subject-card">
+                <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="English">
+                <div class="subject-content">
+                    <h3 class="subject-title">English</h3>
+                    <p class="subject-desc">Improve your English language proficiency with our grammar, literature, and communication lessons.</p>
+                    <a href="english.html" class="btn">Lectures</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; </p>
+    </footer>
+    
+    <script>
+     function updateCountdown() {
+    // Set the target date to November 15, 2025 at 00:00:00
+    const targetDate = new Date('November 15, 2025 00:00:00');
+    
+    const now = new Date();
+    const diff = targetDate - now;
+    
+    // Calculate time difference
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    
+    // Update the display
+    document.getElementById('days').textContent = days.toString().padStart(2, '0');
+    document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+    document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+    document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+    
+    // If the countdown is finished
+    if (diff < 0) {
+        clearInterval(countdownInterval);
+        document.getElementById('days').textContent = '00';
+        document.getElementById('hours').textContent = '00';
+        document.getElementById('minutes').textContent = '00';
+        document.getElementById('seconds').textContent = '00';
+        // You could also display a message here
+        document.querySelector('.countdown-title').textContent = 'The event has started!';
+    }
+}
+
+// Update countdown every second
+const countdownInterval = setInterval(updateCountdown, 1000);
+updateCountdown(); // Initial call
+    </script>
+</body>
+</html>
