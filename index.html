@@ -3,537 +3,402 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Physics Lectures | Talent</title>
+    <title>Be a warrior</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
-            --primary: #34A905;
-            --secondary: #ff7b7b;
-            --dark: #121212;
-            --darker: #1e1e1e;
-            --light: #e0e0e0;
-            --lighter: #f5f5f5;
-            --card-bg: #2d2d2d;
-            --border: #444;
-            --paper-bg: #1a1a1a;
-            --chapter-bg: #252525;
-            --chapter-hover: #333;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--dark);
-            color: var(--light);
-            line-height: 1.6;
+    --primary: #6a8cff;  /* Brighter primary for dark mode */
+    --secondary: #ff7b7b;
+    --dark: #121212;    /* Dark background */
+    --darker: #1e1e1e;  /* Slightly lighter dark */
+    --light: #e0e0e0;   /* Light text */
+    --lighter: #f5f5f5; /* Brighter text */
+    --success: #4caf50;
+    --card-bg: #2d2d2d; /* Card backgrounds */
+    --border: #444;     /* Borders */
+}
+        
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-
-        .subject-header {
-            background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), var(--darker);
+        
+        body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--dark);
+    color: var(--light);
+}
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), #00ab41);
             color: white;
-            text-align: center;
-            padding: 3rem 2rem;
-            margin-bottom: 2rem;
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
-
-        .controls {
-            display: flex;
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: 0 auto 1rem;
-            padding: 0 2rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .content-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .paper {
-            background: var(--paper-bg);
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-
-        .paper-header {
-            padding: 1.5rem;
-            background: linear-gradient(90deg, var(--primary), #2a7a0c);
-            color: white;
-            cursor: pointer;
+        
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
-        .paper-title {
-            font-size: 1.4rem;
+        
+        .logo {
+            font-size: 1.8rem;
             font-weight: 700;
-            margin: 0;
         }
-
-        .paper-toggle {
-            transition: transform 0.3s ease;
-            transform: rotate(-90deg);
-        }
-
-        .paper.active .paper-toggle {
-            transform: rotate(0deg);
-        }
-
-        .chapters-container {
-            display: none;
-            padding: 0.5rem 1.5rem 1.5rem;
-        }
-
-        .paper.active .chapters-container {
-            display: block;
-        }
-
-        .chapter {
-            background: var(--chapter-bg);
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            overflow: hidden;
-        }
-
-        .chapter-header {
-            padding: 1.2rem 1.5rem;
+        
+        .nav-links {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            transition: background 0.3s ease;
+            gap: 2rem;
         }
-
-        .chapter-header:hover {
-            background: var(--chapter-hover);
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
-
-        .chapter-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin: 0;
+        
+        .nav-links a:hover {
+            color: var(--secondary);
         }
-
-        .chapter-toggle {
-            color: var(--light);
-            transition: transform 0.3s ease;
-            transform: rotate(-90deg);
-        }
-
-        .chapter.active .chapter-toggle {
-            transform: rotate(0deg);
-        }
-
-        .videos-container {
-            display: none;
-            padding: 0 1.5rem 1.5rem;
-        }
-
-        .chapter.active .videos-container {
-            display: block;
-        }
-
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .video-card {
-            background: var(--card-bg);
-            border-radius: 8px;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .video-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        .video-container {
+        
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: #0000;
+            background-size: cover;
             position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
+            color: white;
         }
-
-        .video-container iframe {
+        
+        .hero::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            border: none;
+            background: rgba(0,0,0,0.6);
         }
-
-        .video-info {
-            padding: 1rem;
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
         }
-
-        .video-title {
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
             font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            color: var(--lighter);
+            margin-bottom: 2rem;
         }
-
-        .video-meta {
+        
+        .countdown-container {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem auto;
+            max-width: 600px;
+        }
+        
+        .countdown-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .countdown {
             display: flex;
-            justify-content: space-between;
-            color: #b0b0b0;
-            font-size: 0.85rem;
+            justify-content: center;
+            gap: 1rem;
         }
-
-        .progress-bar {
-            height: 4px;
-            background: var(--border);
-            margin-top: 0.5rem;
-            border-radius: 2px;
-            overflow: hidden;
-        }
-
-        .progress-completed {
-            height: 100%;
-            background: var(--primary);
-            width: 0%;
-            transition: width 0.3s ease;
-        }
-
-        .search-box {
-            width: 100%;
+        
+        .countdown-item {
+            background: white;
+            color: var(--dark);
             padding: 1rem;
-            background: var(--darker);
-            border: 1px solid var(--border);
             border-radius: 8px;
-            color: var(--light);
-            font-size: 1rem;
-            flex-grow: 1;
+            min-width: 80px;
+            text-align: center;
         }
-
-        .toggle-all-btn {
-            background: var(--primary);
+        
+        .countdown-number {
+            font-size: 2rem;
+            font-color: red;
+            font-weight: 700;
+           background: linear-gradient(to left, red 50%, black 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+        
+        .countdown-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--dark);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #00ab41;
             color: white;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 8px;
-            cursor: pointer;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
-            white-space: nowrap;
+            border: none;
+            cursor: pointer;
         }
-
-        .toggle-all-btn:hover {
-            background: #2d8a0a;
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
-
+        
+        .btn-primary {
+            background: var(--primary);
+        }
+        
+        .subjects {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            color: var(--dark);
+        }
+        
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .subject-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .subject-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .subject-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .subject-content {
+            padding: 1.5rem;
+        }
+        
+        .subject-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .subject-desc {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
         @media (max-width: 768px) {
-            .video-grid {
-                grid-template-columns: 1fr;
+            .nav-links {
+                display: none;
             }
             
-            .paper-header, .chapter-header {
-                padding: 1rem;
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .countdown {
+                flex-wrap: wrap;
+            }
+            
+            .subject-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <section class="subject-header">
-        <h1>Physics Lectures</h1>
-        <p>Comprehensive video lectures organized by chapters for effective learning</p>
-    </section>
-
-    <div class="controls">
-        <input type="text" class="search-box" placeholder="Search videos...">
-        <button class="toggle-all-btn">Expand All</button>
-    </div>
-
-    <div class="content-container">
-        <!-- Paper I -->
-        <div class="paper">
-            <div class="paper-header">
-                <h2 class="paper-title">Paper I</h2>
-                <span class="paper-toggle"><i class="fas fa-chevron-down"></i></span>
+    <header>
+        <nav>
+            <div class="logo">Talent?</div>
+            <div class="nav-links">
+                <a href="#subjects">Subjects</a>
+                <a href="https://drive.google.com/file/d/1-hm98LjyIJ3WAkVdIzaDiGinq9lEbMcG/view?usp=sharing">Routine</a>
+                
+                
             </div>
-            <div class="chapters-container">
-                <!-- Chapter 1 -->
-                <div class="chapter">
-                    <div class="chapter-header">
-                        <h3 class="chapter-title">Chapter 1: Physical World and Measurement</h3>
-                        <span class="chapter-toggle"><i class="fas fa-chevron-down"></i></span>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Hard Works Always Beats Talent</h1>
+            <p>Be careful about your stimulation</p>
+            
+            <div class="countdown-container">
+                <h3 class="countdown-title">Starts In:</h3>
+                <div class="countdown">
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="days">00</div>
+                        <div class="countdown-label">Days</div>
                     </div>
-                    <div class="videos-container">
-                        <div class="video-grid">
-                            <div class="video-card">
-                                <div class="video-container">
-                                    <iframe src="https://www.youtube.com/embed/WCu0dqfFKnU" allowfullscreen></iframe>
-                                </div>
-                                <div class="video-info">
-                                    <h4 class="video-title">Physical World and Measurement</h4>
-                                    <div class="video-meta">
-                                        <span>Lecture 1.1</span>
-                                    </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-completed" style="width: 75%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="hours">00</div>
+                        <div class="countdown-label">Hours</div>
                     </div>
-                </div>
-                
-                <!-- Chapter 2 -->
-                <div class="chapter">
-                    <div class="chapter-header">
-                        <h3 class="chapter-title">Chapter 2: Vectors</h3>
-                        <span class="chapter-toggle"><i class="fas fa-chevron-down"></i></span>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="minutes">00</div>
+                        <div class="countdown-label">Minutes</div>
                     </div>
-                    <div class="videos-container">
-                        <div class="video-grid">
-                            <div class="video-card">
-                                <div class="video-container">
-                                    <iframe src="https://www.youtube.com/embed/WCu0dqfFKnU" allowfullscreen></iframe>
-                                </div>
-                                <div class="video-info">
-                                    <h4 class="video-title">Vectors</h4>
-                                    <div class="video-meta">
-                                        <span>Lecture 2.1</span>
-                                    </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-completed" style="width: 75%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="seconds">00</div>
+                        <div class="countdown-label">Seconds</div>
                     </div>
                 </div>
-                
-                <!-- Chapter 3 -->
-                <div class="chapter">
-                    <div class="chapter-header">
-                        <h3 class="chapter-title">Chapter 3: Newtonian Mechanics</h3>
-                        <span class="chapter-toggle"><i class="fas fa-chevron-down"></i></span>
-                    </div>
-                    <div class="videos-container">
-                        <div class="video-grid">
-                            <div class="video-card">
-                                <div class="video-container">
-                                    <iframe src="https://www.youtube.com/embed/WCu0dqfFKnU" allowfullscreen></iframe>
-                                </div>
-                                <div class="video-info">
-                                    <h4 class="video-title">Newtonian Mechanics</h4>
-                                    <div class="video-meta">
-                                        <span>Lecture 3.1</span>
-                                    </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-completed" style="width: 75%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+            
+            <a href="#subjects" class="btn">Explore Lectures</a>
+        </div>
+    </section>
+    
+    <section class="subjects" id="subjects">
+        <h2 class="section-title">Subjects</h2>
+        <div class="subject-grid">
+            <div class="subject-card">
+                <img src="https://i.postimg.cc/Bb53R6DS/physics-1.png" alt="Physics">
+                <div class="subject-content">
+                    <h3 class="subject-title">Physics</h3>
+                    <p class="subject-desc">Master the fundamentals of motion, energy, and forces with our comprehensive physics lectures.</p>
+                    <a href="physics.html" class="btn">Lectures</a>
                 </div>
-                
-                <!-- Chapter 5 -->
-                <div class="chapter">
-                    <div class="chapter-header">
-                        <h3 class="chapter-title">Chapter 5: Work, Energy and Power</h3>
-                        <span class="chapter-toggle"><i class="fas fa-chevron-down"></i></span>
-                    </div>
-                    <div class="videos-container">
-                        <div class="video-grid">
-                            <div class="video-card">
-                                <div class="video-container">
-                                    <iframe src="https://www.youtube.com/embed/WCu0dqfFKnU" allowfullscreen></iframe>
-                                </div>
-                                <div class="video-info">
-                                    <h4 class="video-title">Work, Energy and Power</h4>
-                                    <div class="video-meta">
-                                        <span>Lecture 5.1</span>
-                                    </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-completed" style="width: 75%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+            
+            <div class="subject-card">
+                <img src="https://i.postimg.cc/W3BpQCHn/chemistry-1.png" alt="Chemistry">
+                <div class="subject-content">
+                    <h3 class="subject-title">Chemistry</h3>
+                    <p class="subject-desc">Explore the world of atoms, molecules, and chemical reactions with our expert instructors.</p>
+                    <a href="chemistry.html" class="btn">Lectures</a>
                 </div>
-                
-                <!-- Chapter 6 -->
-                <div class="chapter">
-                    <div class="chapter-header">
-                        <h3 class="chapter-title">Chapter 6: Gravitation and Gravity</h3>
-                        <span class="chapter-toggle"><i class="fas fa-chevron-down"></i></span>
-                    </div>
-                    <div class="videos-container">
-                        <div class="video-grid">
-                            <div class="video-card">
-                                <div class="video-container">
-                                    <iframe src="https://www.youtube.com/embed/WCu0dqfFKnU" allowfullscreen></iframe>
-                                </div>
-                                <div class="video-info">
-                                    <h4 class="video-title">Gravitation and Gravity</h4>
-                                    <div class="video-meta">
-                                        <span>Lecture 6.1</span>
-                                    </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-completed" style="width: 75%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+            
+            <div class="subject-card">
+                <img src="https://i.postimg.cc/s283hbsr/math-1.png" alt="Mathematics">
+                <div class="subject-content">
+                    <h3 class="subject-title">Mathematics</h3>
+                    <p class="subject-desc">From algebra to calculus, build your mathematical skills with our structured video lessons.</p>
+                    <a href="math.html" class="btn">Lectures</a>
                 </div>
-                
-                <!-- Chapter 7 -->
-                <div class="chapter">
-                    <div class="chapter-header">
-                        <h3 class="chapter-title">Chapter 7: Structural Properties of Matters</h3>
-                        <span class="chapter-toggle"><i class="fas fa-chevron-down"></i></span>
-                    </div>
-                    <div class="videos-container">
-                        <div class="video-grid">
-                            <div class="video-card">
-                                <div class="video-container">
-                                    <iframe src="https://www.youtube.com/embed/WCu0dqfFKnU" allowfullscreen></iframe>
-                                </div>
-                                <div class="video-info">
-                                    <h4 class="video-title">Structural Properties of Matters</h4>
-                                    <div class="video-meta">
-                                        <span>Lecture 7.1</span>
-                                    </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-completed" style="width: 75%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+            
+            <div class="subject-card">
+                <img src="https://i.postimg.cc/hvQzmVHC/sub.png" alt="Biology">
+                <div class="subject-content">
+                    <h3 class="subject-title">Biology</h3>
+                    <p class="subject-desc">Discover the wonders of life science with our engaging biology lecture series.</p>
+                    <a href="biology.html" class="btn">Lectures</a>
                 </div>
-                
-                <!-- Chapter 8 -->
-                <div class="chapter">
-                    <div class="chapter-header">
-                        <h3 class="chapter-title">Chapter 8: Periodic Motion</h3>
-                        <span class="chapter-toggle"><i class="fas fa-chevron-down"></i></span>
-                    </div>
-                    <div class="videos-container">
-                        <div class="video-grid">
-                            <div class="video-card">
-                                <div class="video-container">
-                                    <iframe src="https://www.youtube.com/embed/WCu0dqfFKnU" allowfullscreen></iframe>
-                                </div>
-                                <div class="video-info">
-                                    <h4 class="video-title">Periodic Motion</h4>
-                                    <div class="video-meta">
-                                        <span>Lecture 8.1</span>
-                                    </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-completed" style="width: 75%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+            
+            <div class="subject-card">
+                <img src="https://i.postimg.cc/NfhLV2hc/bangla-1.png" alt="Bangla">
+                <div class="subject-content">
+                    <h3 class="subject-title">Bangla</h3>
+                    <p class="subject-desc">Enhance your Bangla language skills with our comprehensive literature and grammar lessons.</p>
+                    <a href="bangla.html" class="btn">Lectures</a>
                 </div>
-                
-                <!-- Chapter 10 -->
-                <div class="chapter">
-                    <div class="chapter-header">
-                        <h3 class="chapter-title">Chapter 10: Ideal Gas</h3>
-                        <span class="chapter-toggle"><i class="fas fa-chevron-down"></i></span>
-                    </div>
-                    <div class="videos-container">
-                        <div class="video-grid">
-                            <div class="video-card">
-                                <div class="video-container">
-                                    <iframe src="https://www.youtube.com/embed/WCu0dqfFKnU" allowfullscreen></iframe>
-                                </div>
-                                <div class="video-info">
-                                    <h4 class="video-title">Ideal Gas</h4>
-                                    <div class="video-meta">
-                                        <span>Lecture 10.1</span>
-                                    </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-completed" style="width: 75%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+            
+            <div class="subject-card">
+                <img src="https://i.postimg.cc/MK8KtkRZ/gk-1.png" alt="General Knowledge">
+                <div class="subject-content">
+                    <h3 class="subject-title">General Knowledge</h3>
+                    <p class="subject-desc">Expand your knowledge about the world with our GK lecture series covering various topics.</p>
+                    <a href="gk.html" class="btn">Lectures</a>
+                </div>
+            </div>
+            
+            <div class="subject-card">
+                <img src="https://i.postimg.cc/J0j7mKwW/english-1.png" alt="English">
+                <div class="subject-content">
+                    <h3 class="subject-title">English</h3>
+                    <p class="subject-desc">Improve your English language proficiency with our grammar, literature, and communication lessons.</p>
+                    <a href="english.html" class="btn">Lectures</a>
                 </div>
             </div>
         </div>
-    </div>
-
+    </section>
+    
+    <footer>
+        <p>&copy; </p>
+    </footer>
+    
     <script>
-        // Initialize all papers and chapters as collapsed
-        document.querySelectorAll('.paper, .chapter').forEach(element => {
-            element.classList.remove('active');
-        });
+     function updateCountdown() {
+    // Set the target date to November 15, 2025 at 00:00:00
+    const targetDate = new Date('November 15, 2025 00:00:00');
+    
+    const now = new Date();
+    const diff = targetDate - now;
+    
+    // Calculate time difference
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    
+    // Update the display
+    document.getElementById('days').textContent = days.toString().padStart(2, '0');
+    document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+    document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+    document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+    
+    // If the countdown is finished
+    if (diff < 0) {
+        clearInterval(countdownInterval);
+        document.getElementById('days').textContent = '00';
+        document.getElementById('hours').textContent = '00';
+        document.getElementById('minutes').textContent = '00';
+        document.getElementById('seconds').textContent = '00';
+        // You could also display a message here
+        document.querySelector('.countdown-title').textContent = 'The event has started!';
+    }
+}
 
-        // Toggle papers
-        document.querySelectorAll('.paper-header').forEach(header => {
-            header.addEventListener('click', () => {
-                const paper = header.parentElement;
-                paper.classList.toggle('active');
-                updateToggleAllButton();
-            });
-        });
-
-        // Toggle chapters
-        document.querySelectorAll('.chapter-header').forEach(header => {
-            header.addEventListener('click', () => {
-                const chapter = header.parentElement;
-                chapter.classList.toggle('active');
-                updateToggleAllButton();
-            });
-        });
-
-        // Search functionality
-        const searchBox = document.querySelector('.search-box');
-        searchBox.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            document.querySelectorAll('.video-card').forEach(card => {
-                const title = card.querySelector('.video-title').textContent.toLowerCase();
-                card.style.display = title.includes(searchTerm) ? 'block' : 'none';
-            });
-        });
-
-        // Expand/Collapse All functionality
-        const toggleAllBtn = document.querySelector('.toggle-all-btn');
-        toggleAllBtn.addEventListener('click', () => {
-            const papers = document.querySelectorAll('.paper');
-            const allExpanded = Array.from(papers).every(p => p.classList.contains('active'));
-            
-            papers.forEach(paper => {
-                if (allExpanded) {
-                    paper.classList.remove('active');
-                    paper.querySelectorAll('.chapter').forEach(ch => ch.classList.remove('active'));
-                } else {
-                    paper.classList.add('active');
-                }
-            });
-            
-            updateToggleAllButton();
-        });
-
-        function updateToggleAllButton() {
-            const papers = document.querySelectorAll('.paper');
-            const allExpanded = Array.from(papers).every(p => p.classList.contains('active'));
-            toggleAllBtn.textContent = allExpanded ? 'Collapse All' : 'Expand All';
-        }
+// Update countdown every second
+const countdownInterval = setInterval(updateCountdown, 1000);
+updateCountdown(); // Initial call
     </script>
 </body>
 </html>
