@@ -167,16 +167,7 @@ header {
         display: block;
     }
 
-    /* Mobile responsive adjustments */
-    @media (max-width: 768px) {
-        .countdown-item {
-            min-width: 70px;
-            padding: 0.8rem;
-        }
-
-        .countdown-number {
-            font-size: 1.8rem;
-        }
+    
    
 
 
