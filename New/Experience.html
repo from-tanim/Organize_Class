@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
-            --primary: #eb6123;
-            --secondary: #ff6b6b;
+            --primary: #6E1201;
+            --secondary: #823903;
             --dark: #121212;
             --darker: #1e1e1e;
             --light: #e0e0e0;
@@ -36,6 +36,15 @@
             margin: 0;
             padding: 0;
         }
+
+header {
+            background: linear-gradient(140deg, var(--primary), #2E0202);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+        }
+
+
 
         .header {
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
@@ -79,6 +88,16 @@
             opacity: 0.9;
             margin-bottom: 2rem;
         }
+        
+        
+
+
+.logo {
+            font-size: 1.9rem;
+            font-weight: 700;
+        }
+
+
 
         .subject-tabs {
             display: flex;
@@ -410,16 +429,139 @@
                 padding: 0.6rem 1rem;
                 font-size: 0.9rem;
             }
+            
+            
+            .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: #0000;
+            background-size: cover;
+            position: relative;
+            color: white;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+            
+            
+            
+            
+            
+            
+            .countdown-container {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem auto;
+            max-width: 600px;
+        }
+        
+        .countdown-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .countdown-item {
+            background: white;
+            color: var(--dark);
+            padding: 1rem;
+            border-radius: 8px;
+            min-width: 80px;
+            text-align: center;
+        }
+        
+        .countdown-number {
+            font-size: 2rem;
+            font-color: red;
+            font-weight: 700;
+           background: linear-gradient(to left, red 50%, black 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+        
+        .countdown-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--dark);
+        }
+            
+            
+            
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <div class="header-content">
-            <h1>Academic Marathon Lectures</h1>
-            <p>Comprehensive video lectures organized by subjects and chapters for effective learning</p>
-        </div>
+    <header>
+        <nav>
+            <div class="logo">Talent?</div>
+            
+                
+                
+            </div>
+        </nav>
     </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Hard Works Always Beats Talent</h1>
+            <p>Be careful about your stimulation</p>
+            
+            <div class="countdown-container">
+                <h3 class="countdown-title">Starts In:</h3>
+                <div class="countdown">
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="days">00</div>
+                        <div class="countdown-label">Days</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="hours">00</div>
+                        <div class="countdown-label">Hours</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="minutes">00</div>
+                        <div class="countdown-label">Minutes</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="seconds">00</div>
+                        <div class="countdown-label">Seconds</div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            <!--Subject Tabs Here-->
 
     <nav class="subject-tabs">
         <button class="subject-tab biology active" data-subject="biology">Biology</button>
@@ -1428,6 +1570,52 @@
     </footer>
 
     <script>
+    
+    
+    //Here goes the Countdown
+    
+    function updateCountdown() {
+    // Set the target date to November 15, 2025 at 00:00:00
+    const targetDate = new Date('November 15, 2025 00:00:00');
+    
+    const now = new Date();
+    const diff = targetDate - now;
+    
+    // Calculate time difference
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    
+    // Update the display
+    document.getElementById('days').textContent = days.toString().padStart(2, '0');
+    document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+    document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+    document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+    
+    // If the countdown is finished
+    if (diff < 0) {
+        clearInterval(countdownInterval);
+        document.getElementById('days').textContent = '00';
+        document.getElementById('hours').textContent = '00';
+        document.getElementById('minutes').textContent = '00';
+        document.getElementById('seconds').textContent = '00';
+        // You could also display a message here
+        document.querySelector('.countdown-title').textContent = 'The event has started!';
+    }
+}
+
+// Update countdown every second
+const countdownInterval = setInterval(updateCountdown, 1000);
+updateCountdown(); // Initial call
+    
+    
+    
+    
+    
+    
+    
+    
         // Initialize all chapters as collapsed
         document.querySelectorAll('.chapter').forEach(chapter => {
             chapter.classList.remove('active');
