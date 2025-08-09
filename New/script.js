@@ -1,7 +1,4 @@
-< script >
-
-
-    //Here goes the Countdown
+//Here goes the Countdown
 
     function updateCountdown() {
         // Set the target date to November 15, 2025 at 00:00:00
@@ -142,5 +139,4 @@ document.querySelectorAll('.progress-completed').forEach(progress => {
         const randomProgress = Math.floor(Math.random() * 30) + 10;
         progress.style.width = `${randomProgress}%`;
     }
-}); <
-/script>
+});
