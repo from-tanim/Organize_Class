@@ -91,6 +91,96 @@ header {
 
 
 
+.hero {
+        text-align: center;
+        padding: 4rem 2rem;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        position: relative;
+        color: white;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+    }
+
+
+.countdown-container {
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+        padding: 2rem;
+        border-radius: 10px;
+        margin: 2rem auto;
+        max-width: 600px;
+        border: 1px solid var(--primary);
+    }
+
+    .countdown-title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: white;
+        text-align: center;
+    }
+
+    .countdown {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .countdown-item {
+        background: rgba(110, 18, 1, 0.3);
+        color: white;
+        padding: 1rem;
+        border-radius: 8px;
+        min-width: 80px;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .countdown-number {
+        font-size: 2rem;
+        font-weight: 700;
+        color: white;
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+
+    .countdown-label {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.7);
+        margin-top: 0.5rem;
+        display: block;
+    }
+
+    /* Mobile responsive adjustments */
+    @media (max-width: 768px) {
+        .countdown-item {
+            min-width: 70px;
+            padding: 0.8rem;
+        }
+
+        .countdown-number {
+            font-size: 1.8rem;
+        }
+   
+
+
+
 .subject-tabs {
     display: flex;
     overflow-x: auto;
@@ -455,92 +545,8 @@ header {
     }
 
 
-    .hero {
-        text-align: center;
-        padding: 4rem 2rem;
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        position: relative;
-        color: white;
-    }
-
-    .hero-content {
-        position: relative;
-        z-index: 1;
-        max-width: 800px;
-        margin: 0 auto;
-    }
-
-    .hero h1 {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-    }
-
-    .hero p {
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
-        opacity: 0.9;
-    }
+    
 
 
-
-    /* Add this to your CSS, outside any media queries */
-    .countdown-container {
-        background: rgba(0, 0, 0, 0.3);
-        backdrop-filter: blur(10px);
-        padding: 2rem;
-        border-radius: 10px;
-        margin: 2rem auto;
-        max-width: 600px;
-        border: 1px solid var(--primary);
-    }
-
-    .countdown-title {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-        color: white;
-        text-align: center;
-    }
-
-    .countdown {
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-        flex-wrap: wrap;
-    }
-
-    .countdown-item {
-        background: rgba(110, 18, 1, 0.3);
-        color: white;
-        padding: 1rem;
-        border-radius: 8px;
-        min-width: 80px;
-        text-align: center;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .countdown-number {
-        font-size: 2rem;
-        font-weight: 700;
-        color: white;
-        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-    }
-
-    .countdown-label {
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.7);
-        margin-top: 0.5rem;
-        display: block;
-    }
-
-    /* Mobile responsive adjustments */
-    @media (max-width: 768px) {
-        .countdown-item {
-            min-width: 70px;
-            padding: 0.8rem;
-        }
-
-        .countdown-number {
-            font-size: 1.8rem;
-        }
-    }
+   
+    
