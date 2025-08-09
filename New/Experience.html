@@ -134,7 +134,7 @@
         }
 
         .search-box {
-            width: 100%;
+            width: 70%;
             padding: 1rem 1rem 1rem 3rem;
             background: var(--darker);
             border: 1px solid var(--border);
@@ -142,18 +142,20 @@
             color: var(--light);
             font-size: 1rem;
             transition: all 0.3s ease;
+            
         }
 
         .search-box:focus {
             border-color: var(--primary);
             outline: none;
             box-shadow: 0 0 0 2px rgba(74, 107, 255, 0.2);
+            padding: 0.8rem 1.5rem;
         }
 
         .search-icon {
             position: absolute;
-            left: 1rem;
-            top: 50%;
+            left: 0.5rem;
+            top: 30%;
             transform: translateY(-50%);
             color: #b0b0b0;
         }
@@ -436,16 +438,16 @@
             <input type="text" class="search-box" placeholder="Search lectures...">
 
 
-            <!-- Filter Off -->
-            <!--
+            
         </div>
         <br>
         <div class="action-buttons">
             <button class="filter-btn">
                 <i class="fas fa-filter"></i> Filter
             </button>
-            -->
-            <button class="toggle-all-btn">
+           
+            <br>
+            <button align="center" class="toggle-all-btn">
                 <i class="fas fa-expand"></i> Expand All
             </button>
         </div>
